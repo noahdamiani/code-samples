@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row program-view">
+    <div class="col-md-8"><h2><%= @assessment_window.program.client.abbreviation %> | <%= @assessment_window.program.name %> (<%= @assessment_window.program.abbreviation %>)</h2></div>
+    <div class="col-md-4 info">
+      <div><strong><%= @assessment_window.start_date.strftime('%B %Y') %> - <%= @assessment_window.end_date.strftime('%B %Y') %></strong></div>
+      <div class="program-status <%= @assessment_window.status.downcase %>"></div><div><%= @assessment_window.status %></div>
+    </div>
+  </div>
+  <div class="row">
+    <header>
+      <div class="page-header-title">
+        <h1>Scoring Runs</h1>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-md-9">
+        <section class="panel">
+          <div class="card">
+            <table class="emails">
+              <tbody>
+                <% if @assessment_window.scoring_runs.any? %>
+                  <% @assessment_window.scoring_runs.each do |scoring_run| %>
+                    <tr>
+                      <td><strong><%= scoring_run.scoring_populations.flat_map{|p| p.responses}.count %> Candidate Responses</strong></td>
+                      <td>2 Attachments</td>
+                      <td><button class="btn-muted btn add-selected">Analysis</button> <button class="btn-muted btn add-selected">Reports</button></td>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <tr>
+                    <td>There are no scoring runs. Would you like to <%= link_to('add one now', new_program_assessment_window_scoring_run_path) %>?</td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="row foot-btn">
+          <%= link_to('New Scoring Run', new_program_assessment_window_scoring_run_path, class: 'btn btn-primary') %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <section class="panel">
+          <div class="card">
+            <div class="form-group form-info">
+              <p>Assessment Window Stats</p>
+            </div>
+            <div class="form-group">
+              <table class="emails">
+                <tbody>
+                  <tr>
+                  <td><strong>35%</strong></td>
+                  <td>Candidate</td>
+                </tr>
+                <tr>
+                  <td><strong>125</strong></td>
+                  <td>Scored</td>
+                </tr>
+                <tr>
+                  <td><strong>36%</strong></td>
+                  <td>Complete</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function(){
+  $('.emails tbody').each(function(){
+    if ($(this).children().length === 1) {
+      $(this).find('td').css('text-align', 'left');
+    }
+  });
+});
+</script>

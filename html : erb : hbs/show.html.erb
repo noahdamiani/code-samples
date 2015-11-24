@@ -1,0 +1,76 @@
+<div class="container">
+  <%= form_for(@scoring_run, url: program_assessment_window_scoring_runs_path(@assessment_window.program, @assessment_window)) do |f| %>
+  <div class="row program-view">
+    <div class="col-md-8"><h2><%= @assessment_window.program.client.abbreviation %> | <%= @assessment_window.program.name %> (<%= @assessment_window.program.abbreviation %>)</h2></div>
+    <div class="col-md-4 info">
+      <div><strong><%= @assessment_window.start_date.strftime('%B %Y') %> - <%= @assessment_window.end_date.strftime('%B %Y') %></strong></div>
+      <div class="program-status <%= @assessment_window.status.downcase %>"></div><div><%= @assessment_window.status %></div>
+    </div>
+  </div>
+  <div class="row graphic">
+    <div class="divider"></div>
+    <ul class="steps">
+      <li>
+        <div class="ccb">
+          <div class="circle checked"><i class="fa fa-check"></i></div>
+        </div>
+        <span>Initial Analysis</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Group Review</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Client Review</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Client Sign Off</span>
+      </li>
+    </ul>
+  </div>
+  <div class="score-run">
+    <h3>Scoring Population</h3>
+    <div class="pull-left">
+      <select>
+        <option>Bulk Actions</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+       <select>
+        <option>Filter By...</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+    </div>
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-jump"><input type="text" value="1"> of 1 </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+
+      <%= render partial: 'runs' %>
+
+      <div class="pull-right">
+        <button class="btn btn-primary run">Run Score</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= javascript_include_tag 'scoring_run' %>

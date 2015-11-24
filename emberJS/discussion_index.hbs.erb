@@ -1,0 +1,16 @@
+<h1 class="discussion-boards">Discussion Boards</h1>
+<ul class="board-list">
+  {{#each}}
+  <li>
+    {{#link-to 'community_discussion' title}}
+    <span class="icon-right-arrow"></span>
+    <span class="timestamp">{{time-ago updated_at}}</span>
+    <div class="board-title row">
+      <div>{{title}}</div>
+    </div>
+    <p>{{description}}</p>
+    <span class="topics">{{item_count}} Topics</span>
+    {{/link-to}}
+  </li>
+  {{/each}}
+</ul>

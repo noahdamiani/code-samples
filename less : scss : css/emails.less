@@ -1,0 +1,76 @@
+// Manage Emails Card
+// ------------------------------------
+
+table {
+  &.emails {
+    width: 100%;
+
+    > tbody {
+      tr {
+        margin: 18px 0;
+        padding: 0;
+        text-align: left;
+        vertical-align: baseline;
+        
+        td {
+          display: block;
+          color: @PEtextLightGrey;
+          font-weight: 300;
+          font-size: 15px;
+          margin-left: 10px;
+        }
+
+        td:first-child {
+          font-weight: 600;
+          color: @PEtextDarkGrey;
+          margin-left: 0;
+        }
+
+        td:last-child {
+          text-align: left;
+          padding-bottom: 18px;
+
+          a {
+            color: @PEaccentRed;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  table {
+    &.emails > tbody {
+      width: 100%;
+
+      tr {
+        margin: 18px 0;
+        padding: 0;
+        text-align: left;
+        
+        td {
+          display: table-cell;
+          color: @PEtextLightGrey;
+          font-weight: 300;
+          font-size: 15px;
+          margin-left: 0;
+          padding: 10px 0;
+        }
+
+        td:first-child {
+          font-weight: 600;
+          color: @PEtextDarkGrey;
+        }
+
+        td:last-child {
+          text-align: right;
+
+          a {
+            color: @PEaccentRed;
+          }
+        }
+      }
+    }
+  }
+}

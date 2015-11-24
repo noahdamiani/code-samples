@@ -1,0 +1,145 @@
+<div class="container">
+  <%= form_for(@scoring_run, url: program_assessment_window_scoring_runs_path(@assessment_window.program, @assessment_window)) do |f| %>
+  <div class="row program-view">
+    <div class="col-md-8"><h2><%= @assessment_window.program.client.abbreviation %> | <%= @assessment_window.program.name %> (<%= @assessment_window.program.abbreviation %>)</h2></div>
+    <div class="col-md-4 info">
+      <div><strong><%= @assessment_window.start_date.strftime('%B %Y') %> - <%= @assessment_window.end_date.strftime('%B %Y') %></strong></div>
+      <div class="program-status <%= @assessment_window.status.downcase %>"></div><div><%= @assessment_window.status %></div>
+    </div>
+  </div>
+  <div class="score-pane">
+  <div class="modal fade" id="score-key" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header clearfix">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3>New Form Key</h3>
+          <h3>Load Previous Form Key</h3>
+        </div>
+        <%= f.fields_for(@new_form_key) do |form_key_form| %>
+        <div class="modal-body clearfix">
+          <div class="form-key">
+            <form role="form">
+              <div class="form-group">
+                <%= form_key_form.label :name, 'Name' %>
+                <%= form_key_form.text_field :name, placeholder: 'Form Key 1' %>
+              </div>
+              <div class="form-group">
+                <%= form_key_form.label :multiplier, 'Multiplier' %>
+                <%= form_key_form.text_field :multiplier, placeholder: '1.0' %>
+              </div>
+              <div class="form-group">
+                <%= form_key_form.label :minimum_scale_value, 'Minimum Scale Value' %>
+                <%= form_key_form.text_field :minimum_scale_value, placeholder: '2.0' %>
+              </div>
+              <div class="form-group">
+                <%= form_key_form.label :maximum_scale_value, 'Max Scale Score' %>
+                <%= form_key_form.text_field :maximum_scale_value, placeholder: '95' %>
+              </div>
+              <div class="form-group">
+                <%= form_key_form.label :minimum_raw_score, 'Minimum Raw Score' %>
+                <%= form_key_form.text_field :minimum_raw_score, placeholder: '22' %>
+              </div>
+              <div class="form-group">
+                <%= form_key_form.label :maximum_raw_score, 'Maximum Raw Score' %>
+                <%= form_key_form.text_field :maximum_raw_score, placeholder: '75' %>
+              </div>
+            </form>
+          </div>
+          <div class="score-pane">
+            <ul id="form-key" class="list-table card">
+              <li class="ui-state-disabled header">
+                <div>Name</div>
+                <div>Created</div>
+              </li>
+              <% @form_keys.each do |form_key| %>
+              <li class="table-row"
+                data-minimum-scale-value="<%= form_key.minimum_scale_value.to_i %>"
+                data-maximum-scale-value="<%= form_key.maximum_scale_value.to_i %>"
+                data-minimum-raw-score="<%= form_key.minimum_raw_score.to_i %>"
+                data-maximum-raw-score="<%= form_key.maximum_raw_score.to_i %>"
+                data-multiplier="<%= form_key.multiplier.to_i %>"
+              >
+                <div><%= form_key.name %></div>
+                <div><%= form_key.created_at.strftime("%B #{form_key.created_at.day.ordinalize}, %Y") %></div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary run">Okay</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="row graphic">
+    <div class="divider"></div>
+    <ul class="steps">
+      <li>
+        <div class="ccb">
+          <div class="circle checked"><i class="fa fa-check"></i></div>
+        </div>
+        <span>Initial Analysis</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Group Review</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Client Review</span>
+      </li>
+      <li>
+        <div class="ccb">
+          <div class="circle"></div>
+        </div>
+        <span>Client Sign Off</span>
+      </li>
+    </ul>
+  </div>
+  <div class="score-run">
+    <h3>Scoring Population</h3>
+    <div class="pull-left">
+      <select>
+        <option>Bulk Actions</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+       <select>
+        <option>Filter By...</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+    </div>
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-jump"><input type="text" value="1"> of 1 </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+
+      <%= render partial: 'runs' %>
+
+      <div class="pull-right">
+        <button class="btn btn-primary run">Run Score</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= javascript_include_tag 'scoring_run' %>

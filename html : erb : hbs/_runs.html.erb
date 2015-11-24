@@ -1,0 +1,31 @@
+<section class="panel">
+  <div class="card">
+
+      <table id="scores" class="emails selectable">
+        <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th data-sort="string">Name</th>
+              <th data-sort="int">Confirmation #</th>
+              <th data-sort="int">End Date</th>
+              <th data-sort="int">Form #</th>
+              <th data-sort="int">% Score</th>
+              <th data-sort="string">P / F</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @new_responses.each do |response| %>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><%= response.name %></td>
+              <td><%= response.confirmation_number %></td>
+              <td><%= response.end_date.strftime('%-m/%-d/%-Y') %></td>
+              <td><%= response.form_number %></td>
+              <td><%= response.score %>%</td>
+              <td><%= response.pass_fail %></td>
+            </tr>
+          <% end %>
+          </tbody>
+      </table>
+  </div>
+</section>

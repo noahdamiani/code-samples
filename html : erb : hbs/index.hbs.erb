@@ -1,0 +1,83 @@
+<section class="flex-container">
+  <section class="left-content">
+    <section>
+      <h3>Documents ({{document_count}})</h3>
+      <div class="right inline-dropdown">
+        {{sort-select content=sorts value=currentSort optionValuePath='content.label' optionLabelPath='content.label'}}
+      </div>
+      <ul class="documents">
+      {{#if this}}
+      {{#each}}
+        {{#link-to 'project_document_details' id}}
+        <li>
+          <div class="left">
+            <div class="document-title">
+              {{#if is_deliverable}}
+                <span class="deliverable">
+                  <%= image_tag('icon-deliverable-gray.svg', alt: 'deliverable') %>
+                </span>
+              {{/if}}
+              <strong>{{label}}</strong> - {{modified_by}}
+            </div>
+          </div>
+          <div class="right">
+            <span class="count left">{{child_count}} comments</span>
+            {{#if extension}}
+            <div class="document-type left">
+              <div>{{file-icon extension=extension}}.{{extension}}</div>
+            </div>
+            {{/if}}
+            <div class="document-timestamp right">{{time-ago last_updated}}</div>
+          </div>
+        </li>
+        {{/link-to}}
+      {{/each}}
+      {{else}}
+        <p>Could not load documents, please try again in a few minutes.</p>
+      {{/if}}
+      </ul>
+    </section>
+  </section>
+
+  <aside class="small-12 medium-6 large-3 column my-workbench-aside my-workbench-document-versions sidebar">
+    <section class="sidebar-block">
+      <h6>Add a Document</h6>
+      <div class="row">
+        <label>Document Label:
+        {{input value=document_label placeholder='Name your file'}}
+        </label>
+        {{#if document_name}}
+        <p><strong>File chosen:</strong> {{prettyDocumentName}}</p>
+        {{else}}
+        <p><strong>No file chosen.</strong></p>
+        {{/if}}
+      </div>
+      <div class="row">
+        <p class="is-deliverable">
+          {{input type="checkbox" checked=is_deliverable}}
+          This is a deliverable
+          <span class="icon"></span>
+        </p>
+      </div>
+      <div class="row uploader new-version-uploader">
+        <div class="upload-unit">
+          {{file-upload name='document_path' file=document_data filename=document_path value=document_name action='choseFile' class='file-uploader' filesize=document_size}}
+          <button class="browse">Browse</button>
+        </div>
+        <button {{action 'makeDocument'}} {{bind-attr disabled=loading}} class="send">Upload</button>
+      </div>
+
+      {{#if error}}
+      <div class="form-row">
+        <p class="error">No file was uploaded.</p>
+      </div>
+      {{/if}}
+
+      {{#if limit_reached}}
+      <div class="form-row">
+        <p class="error">This file exceeds the 50mb upload limit.</p>
+      </div>
+      {{/if}}
+    </section>
+  </aside>
+</section>
