@@ -9,6 +9,7 @@
   Target your form as such: 
   $('#your-form-id').inputJumper();
 */
+
 $.fn.inputJumper = function() {
     var form = $(this);
     return form.find(':input').each(function() {
@@ -21,4 +22,3 @@ $.fn.inputJumper = function() {
         });
     });
 };
-$('#form').inputJumper();
