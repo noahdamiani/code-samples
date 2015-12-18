@@ -1,0 +1,32 @@
+.tool-tip {
+    position: relative;
+}
+
+.tool-tip span {
+    color: blue;
+}
+
+.tool-tip div {
+    display: none;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    position: absolute;
+    top: 180%;
+    padding: .5em;
+    left: -12px;
+    min-width: 400px;
+}
+
+.tool-tip div:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 11px 11px;
+    border-color: rgba(0,0,0,0.3) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -11px;
+    left: 23px;
+}
