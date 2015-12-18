@@ -11,14 +11,18 @@
 */
 
 $.fn.inputJumper = function() {
-    var form = $(this);
-    return form.find(':input').each(function() {
-        $(this).on('keyup', function() {
-            var max = parseInt($(this).attr('maxlength'));
-            var field = form.find(':input');
-            if ($(this).val().length === max) {
-                field.eq(field.index(this) + 1).focus();
-            }
-        });
+  var form = this;
+  return form.find(':input').each(function() {
+    $(this).on('keyup', function(e) {
+      var max = parseInt($(this).attr('maxlength')),
+        valueLength = $(this).val().length,
+        field = form.find(':input'),
+        index = field.index(this);
+      if (valueLength === max) {
+        field.eq(index + 1).focus();
+      } else if (index > 0 && e.keyCode === 8 && valueLength === 0) {
+        field.eq(index - 1).focus();
+      }
     });
+  });
 };
