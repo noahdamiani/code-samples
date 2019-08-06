@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div>
+        <a id="logo"></a>
+      </div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end">
+        <ul fxLayout class="navigation-items">
+          <li>
+            <a target="_blank" href="https://soundcloud.com/bigfeelingslittlemood">
+              <mat-icon class="icon">music_note</mat-icon>
+              <span class="label"></span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/noahdamiani">
+              <mat-icon class="icon">code</mat-icon>
+              <span class="label"></span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto: noahdamiani@gmail.com">
+              <mat-icon class="icon">email</mat-icon>
+              <span class="label"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar>
+    <main>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+

@@ -1,0 +1,55 @@
+<div class="cta" #cta>
+  <div class="me">
+    <img src="/assets/img/me.jpg" alt="Noah Damiani">
+  </div>
+  <h1>Hi there.</h1>
+  <h1 class="quote">I am a full-stack engineer residing in San Francisco. I design and write clean, quality code to solve
+    complex problems.
+    I love taking large datasets and building responsive web applications that work seamlessly across all devices.</h1>
+</div>
+<section #section>
+  <div class="pane-container">
+    <h1>Recent Projects</h1>
+      <div class="pane" *ngFor="let project of projects">
+        <div class="info">
+          <h1>{{project.title}}</h1>
+          <p [innerHTML]="project.description"></p>
+          <p><strong>Role: </strong> <span [innerHTML]="project.role"></span> </p>
+          <h4><a target="_blank" href="{{project.uri}}">
+              <mat-icon>link</mat-icon> &nbsp; See it Live
+            </a></h4>
+        </div>
+        <img src="/assets/img/{{project.image}}" title="Brexit Calculator">
+        <mat-icon (click)="showPreview($event, project.image, project.title)">photo_library</mat-icon>
+      </div>
+  </div>
+  <div class="codes">
+    <h1>Expertise</h1>
+    <article>
+      <p>HTML5, SCSS</p>
+    </article>
+    
+    <article>
+      <p>TypeScript</p>
+    </article>
+    
+    <article>
+      <p>UX/UI</p>
+    </article>
+    
+    <article>
+      <p>Java</p>
+    </article>
+    
+    <article>
+      <p>Google Cloud</p>
+    </article>
+  </div>
+</section>
+
+<div id="preview" #preview (click)="closeModal($event)">
+  <mat-icon>close</mat-icon>
+  <div class="container" id="container">
+    <h1></h1>
+  </div>
+</div>
