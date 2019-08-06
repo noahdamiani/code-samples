@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$bg-primary: #111;
+
+@mixin invert() {
+  background: $bg-primary;
+  color: #FFFFFF;
+}
+
+button {
+  @include invert;
+  border: 0;
+  cursor: pointer;
+  padding: 0.5em 1em;
+}
+
+header {
+  @include invert;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bottom-bar {
+  border-top: 5px solid $bg-primary;
+  background: #f9f9f9;
+  padding: 2em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  button {
+    margin-right: 1em;
+  }
+}
+
+.user {
+  border: 5px solid $bg-primary;
+  display: inline-flex;
+  align-items: center;
+  margin: 0.25em;
+  position: relative;
+
+  img {
+    width: 140px;
+  }
+
+  span {
+    display: flex;
+  }
+
+  .hover {
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    opacity: 0;
+    font-size: 12px;
+    padding: 3em 0.25em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    span {
+      display: flex;
+      justify-content: center;
+      margin-right: 0.25em;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &:hover .hover {
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.1s;
+    animation-name: fadeIn;
+    animation-duration: 0.1s;
+  }
+}
+
+.connect {
+  margin-top: 1em;
+}
+
+.form-field {
+  display: flex;
+}
+
+.activity {
+  cursor: pointer;
+  padding: 1em;
+
+  &:hover, &.active {
+    @include invert;
+  }
+}
+
+@-webkit-keyframes fadeIn { 
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}

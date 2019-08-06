@@ -1,0 +1,5 @@
+{
+    "host": "http://localhost",
+    "wss": "ws://localhost",
+    "port": 5000
+}
