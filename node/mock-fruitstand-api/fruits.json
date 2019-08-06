@@ -1,0 +1,58 @@
+{
+    "inventory": [{
+            "id": 0,
+            "name": "Strawberry",
+            "category": "ACID",
+            "price": 5.23,
+            "expires": 7
+        },
+        {
+            "id": 1,
+            "name": "Banana",
+            "category": "SWEET",
+            "price": 3.03,
+            "expires": 4
+        },
+        {
+            "id": 2,
+            "name": "Fig",
+            "category": "SWEET",
+            "price": 7,
+            "expires": 2
+        },
+        {
+            "id": 3,
+            "name": "Peach",
+            "category": "SUB_ACID",
+            "price": 4.50,
+            "expires": 3
+        },
+        {
+            "id": 4,
+            "name": "Avocado",
+            "category": "NON_SWEET",
+            "price": 8.22,
+            "expires": 9
+        },
+        {
+            "id": 5,
+            "name": "Persimmon",
+            "category": "SWEET",
+            "price": 6,
+            "expires": 2
+        },
+        {
+            "id": 6,
+            "name": "Cranberry",
+            "category": "ACID",
+            "price": 7.50,
+            "expires": 5
+        },
+        {
+            "id": 7,
+            "name": "Cucumber",
+            "category": "NON_SWEET",
+            "price": 1.22,
+            "expires": 4
+        }]
+}
