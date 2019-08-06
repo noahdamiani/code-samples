@@ -1,8 +1,10 @@
-## Noah Damiani Code Samples - [noahdamiani.com](http://noahdamiani.com)
-
-**DISCLAIMER**: Some cases of ruby and other server sided code may have been implemented by backend developers on each respective project.
+## Noah Damiani Code Samples - [noah.digital](https://noah.digital)
 
 ## Contents
+* TypeScript
+* Node.js
+* React/Redux
+* Angular 1 + 2
 * EmberJS helpers and controllers
 * Meteor.js events and functions
 * HTML snippets with Handlebars and Rails helpers
@@ -10,5 +12,6 @@
 * jQuery user profile with AJAX calls to java play framework API
 * Module Core JS library
 * Magento Modules
+
 
 
